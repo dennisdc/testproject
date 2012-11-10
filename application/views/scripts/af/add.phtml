@@ -1,0 +1,10 @@
+<div><?php echo $this->form;?></div>
+<div>
+<?php 
+if (is_array($this->errormessages)){
+	foreach ($this->errormessages as $message) {
+		echo $message . "\n";
+	}
+}
+?>
+</div>

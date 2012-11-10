@@ -1,0 +1,26 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p><a class="nav" href="<?php echo $this->url(array('controller' => 'user', 'action' => 'register'), 'default', true);?>">Nieuwe gebruiker</a></p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Gebruikersnaam</th>
+	<th>E-mail</th>
+	<th></th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->user as $user ) : ?>
+            <tr>
+            <td><?php echo $user->u_naam; ?></td>
+            <td><?php echo $user->u_email; ?></td>
+            <td><a href="<?php echo $this->url; ?>/user/delete/u_id/<?php echo $user->u_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url; ?>/user/update/u_id/<?php echo $user->u_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

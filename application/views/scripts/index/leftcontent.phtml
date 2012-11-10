@@ -1,0 +1,9 @@
+<div id="sidebar1">
+<h5>Welkom,</h5>
+<?php echo $this->username;?><br/>
+Gebruiker ID: <?php echo $this->userid; ?><br />
+<a class="nav" href="<?php echo $this->url(array('controller' => 'user', 'action' => 'logout'), 'default', true);?>">Uitloggen</a>
+<br/>
+<h5>Gegenereerd op:</h5>
+<?php echo $this->datum; ?>
+</div>

@@ -1,0 +1,33 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a href="<?php echo $this->url(array('controller'=> 'af', 'action' => 'index'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Terug</a><br />
+</p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Factuurdatum</th>
+	<th>Vervaldatum</th>
+	<th>Leverancier</th>
+	<th>Aankooprekening</th>
+	<th>Bedrag</th>
+	<th>Betaald op</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->af as $aank ) : ?>
+            <tr>
+            <td><?php echo $aank->af_dat; ?></td>
+            <td><?php echo $aank->af_vervaldat; ?></td>
+            <td><?php echo $aank->lev_naam; ?></td>
+            <td><?php echo $aank->afrek_oms; ?></td>
+            <td><?php echo $aank->af_bedrag; ?></td>
+            <td><?php echo $aank->af_betaaldop; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal aankoopfacturen: <b><?php echo $this->afcount;?></b></p>

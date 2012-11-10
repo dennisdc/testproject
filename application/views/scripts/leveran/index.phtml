@@ -1,0 +1,28 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a href="<?php echo $this->url(array('controller'=> 'leveran', 'action' => 'add'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Toevoegen</a>
+<a href="<?php echo $this->url(array('controller'=> 'leveran', 'action' => 'index'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Terug</a><br />
+</p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Naam</th>
+	<th>Verwijderen</th>
+	<th>Aanpassen</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->leveran as $leveran ) : ?>
+            <tr>
+            <td><?php echo $leveran->lev_naam; ?></td>
+            <td><a href="<?php echo $this->url; ?>/leveran/delete/lev_id/<?php echo $leveran->lev_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url; ?>/leveran/update/lev_id/<?php echo $leveran->lev_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal leveranciers: <b><?php echo $this->leverancount;?></b></p>

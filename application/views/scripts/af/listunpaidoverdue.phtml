@@ -1,0 +1,51 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a href="<?php echo $this->url(array('controller'=> 'af', 'action' => 'listunpaid'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Overzicht onbetaald</a>
+<a href="<?php echo $this->url(array('controller'=> 'af', 'action' => 'add'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Toevoegen</a>
+<a href="<?php echo $this->url(array('controller'=> 'af', 'action' => 'printunpaid'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Print</a>
+<a href="<?php echo $this->url(array('controller'=> 'af', 'action' => 'index'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Terug</a><br />
+</p>
+<form action="<?php echo $this->url(array('controller'=> 'af', 'action' => 'payunpaid'), 'default', true) ?>" method="post">
+	<table id="list">
+		<thead>
+		<tr>
+		<th>Factuurdatum</th>
+		<th>Vervaldatum</th>
+		<th>Leverancier</th>
+		<th class="decimal">Bedrag</th>
+		<th class="decimal">Betaald</th>
+		<th>Aanpassen</th>
+		<th>Verwijderen</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php foreach( $this->unpaid as $aank ) : ?>
+            <tr>
+            	<td><?php echo $aank->af_dat; ?></td>
+            	<td><?php echo $aank->af_vervaldat; ?></td>
+            	<td><?php echo $aank->lev_naam; ?></td>
+            	
+            	<td class="decimal"><?php echo $aank->af_bedrag; ?></td>
+            	<td class="decimal"><input type="checkbox" name="toadd[]" value="<?php echo $aank->af_id; ?>" /></td>
+            	<td><a href="<?php echo $this->url(array('controller' => 'af', 'action' => 'update', 'af_id' => $aank->af_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            	<td><a href="<?php echo $this->url(array('controller' => 'af', 'action' => 'delete', 'af_id' => $aank->af_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            </tr>
+            <?php
+            	// totals
+            	$total += $aank->af_bedrag;
+            ?>
+        <?php endforeach; ?>
+    	</tbody>
+    	<tfoot>
+    		<tr>
+    			<td colspan="4" class="decimal"><?php echo number_format($total, 2, '.', ''); ?></td>
+    			<td colspan="3" class="decimal"><input type="submit" value="Wijzigingen bewaren" /></td>
+    		</tr>
+    	</tfoot>
+	</table>
+	
+</form>

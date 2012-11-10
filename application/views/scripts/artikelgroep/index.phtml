@@ -1,0 +1,25 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p><a class="nav" href="<?php echo $this->url(array('controller' => 'artikelgroep', 'action' => 'add'), 'default', true);?>">Artikelgroep toevoegen</a></p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Naam</th>
+	<th>Verwijderen</th>
+	<th>Aanpassen</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->artikelgroep as $groep ) : ?>
+            <tr>
+            <td><?php echo $groep->artgroep_oms; ?></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'artikelgroep', 'action' => 'delete', 'artgroep_id' => $groep->artgroep_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'artikelgroep', 'action' => 'update', 'artgroep_id' => $groep->artgroep_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal artikelgroepen: <b><?php echo $this->artikelgroepcount;?></b></p>

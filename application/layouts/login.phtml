@@ -1,0 +1,31 @@
+<?php echo $this->doctype(); ?>
+<html>
+<head>
+<?php echo $this->headMeta(). PHP_EOL; ?>
+<?php echo $this->headTitle(). PHP_EOL; ?>
+<?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/2colabsolute.css'). PHP_EOL; ?>
+<?php echo $this->headLink()->appendStylesheet($this->baseUrl() .'/js/jhtmlarea/style/jHtmlArea.css') . PHP_EOL; ?>
+<?php echo $this->headLink()->appendStylesheet($this->baseUrl() .'/js/jhtmlarea/style/jHtmlArea.ColorPickerMenu.css') . PHP_EOL; ?>
+<?php echo $this->jQuery()->enable(); ?>
+</head>
+<body class="thrColAbsHdr">
+
+<div id="header"><?php echo $this->partial("_header.phtml"); ?></div>
+<div id="menu"></div>
+<div id="container">
+	<div id="mainContent">
+		<table cellpadding="5" width="100%">
+			<tr valign="top">
+				<td width="3px">
+					<img src="images/spacer.gif" height="600" width="2" />
+				</td>
+				<td>
+					<h1><?php echo $this->escape($this->title); ?></h1>
+					<?php echo $this->layout()->content; ?>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>

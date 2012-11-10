@@ -1,0 +1,46 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p><a class="nav" href="<?php echo $this->url(array('controller' => 'offerte', 'action' => 'add'), 'default', true);?>">Offerte toevoegen</a>
+</p>
+<form action="<?php echo $this->url(array('controller'=> 'offerte', 'action' => 'approve'), 'default', true) ?>" method="post">
+	<table id="list">
+		<thead>
+		<tr>
+		<th>Datum</th>
+		<th>Geldig tot</th>
+		<th>Klant</th>
+		<th class="decimal">Excl.</th>
+		<th class="decimal">BTW</th>
+		<th class="decimal">Incl.</th>
+		<th class="decimal">Goedgekeurd</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php foreach( $this->unapproved as $off ) : ?>
+            <tr>
+            	<td><?php echo $off->off_datum; ?></td>
+            	<td><?php echo $off->off_geldig; ?></td>
+            	<td><?php echo $off->kl_naam1; ?></td>
+            	<td class="decimal"><?php echo $off->off_incl; ?></td>
+            	<td class="decimal"><?php echo $off->off_btw; ?></td>
+            	<td class="decimal"><?php echo $off->off_excl; ?></td>
+            	<td class="decimal"><input type="checkbox" name="toadd[]" value="<?php echo $off->off_id; ?>" /></td>
+            </tr>
+            <?php
+            	// totals
+            	$total += $aank->af_bedrag;
+            ?>
+        <?php endforeach; ?>
+    	</tbody>
+    	<tfoot>
+    		<tr>
+    			<td colspan="4" class="decimal"><?php echo number_format($total, 2, '.', ''); ?></td>
+    			<td class="decimal"><input type="submit" value="Wijzigingen bewaren" /></td>
+    		</tr>
+    	</tfoot>
+	</table>
+	
+</form>

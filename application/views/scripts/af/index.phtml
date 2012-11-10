@@ -1,0 +1,11 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+	<a class="nav" href="<?php echo $this->url(array('controller' => 'af', 'action' => 'add'), 'default', true);?>">Toevoegen</a><br />
+	<a class="nav" href="<?php echo $this->url(array('controller' => 'afrek', 'action' => 'index'), 'default', true);?>">Aankooprekeningen</a><br />
+	<a class="nav" href="<?php echo $this->url(array('controller' => 'af', 'action' => 'listunpaid'), 'default', true);?>">Overzicht onbetaald</a><br/>
+	<a class="nav" href="<?php echo $this->url(array('controller' => 'af', 'action' => 'listall'), 'default', true);?>">Alle aankoopfacturen</a>
+</p>

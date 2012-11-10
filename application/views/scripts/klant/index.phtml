@@ -1,0 +1,38 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a href="<?php echo $this->url(array('controller'=> 'klant', 'action' => 'add'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Toevoegen</a>
+<a href="<?php echo $this->url(array('controller'=> 'klant', 'action' => 'index'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Terug</a><br />
+</p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Actief</th>
+	<th>Taal</th>
+	<th>Naam</th>
+	<th>Adres</th>
+	<th>Postcode</th>
+	<th>Woonplaats</th>
+	<th>Verwijderen</th>
+	<th>Aanpassen</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->klant as $klant ) : ?>
+            <tr>
+            <td><?php echo $klant->kl_actief; ?></td>
+            <td><?php echo $klant->kl_taal; ?></td>
+            <td><a class="nav" href="<?php echo $this->url; ?>/klant/fiche/kl_id/<?php echo $klant->kl_id; ?>" class="navigation"><?php echo $klant->kl_naam1; ?></a></td>
+            <td><?php echo $klant->kl_adres1; ?></td>
+            <td><?php echo $klant->kl_post; ?></td>
+            <td><?php echo $klant->kl_woon; ?></td>
+            <td><a href="<?php echo $this->url; ?>/klant/delete/kl_id/<?php echo $klant->kl_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url; ?>/klant/update/kl_id/<?php echo $klant->kl_id; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal klanten: <b><?php echo $this->usercount;?></b></p>

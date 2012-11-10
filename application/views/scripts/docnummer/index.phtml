@@ -1,0 +1,27 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p><a class="nav" href="<?php echo $this->url(array('controller' => 'docnummer', 'action' => 'add'), 'default', true);?>">Documentnummer toevoegen</a></p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Naam</th>
+	<th>Nummer</th>
+	<th>Verwijderen</th>
+	<th>Aanpassen</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->docnummer as $doc ) : ?>
+            <tr>
+            <td><?php echo $doc->doc_oms; ?></td>
+            <td><?php echo $doc->doc_nr; ?></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'docnummer', 'action' => 'delete', 'doc_id' => $doc->doc_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'docnummer', 'action' => 'update', 'doc_id' => $doc->doc_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal documenten: <b><?php echo $this->docnummercount;?></b></p>

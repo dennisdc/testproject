@@ -1,0 +1,36 @@
+<?php $this->layout()->setLayout('layoutprint'); ?>
+<table border="1">
+		<thead>
+		<tr>
+		<th>Factuurdatum</th>
+		<th>Vervaldatum</th>
+		<th>Leverancier</th>
+		<th>Aankooprekening</th>
+		<th align="right">Bedrag</th>
+		</tr>
+		</thead>
+		<tbody>
+		<?php foreach( $this->unpaid as $aank ) : ?>
+            <tr>
+            	<td align="left"><?php echo $aank->af_dat; ?></td>
+            	<td align="left"><?php echo $aank->af_vervaldat; ?></td>
+            	<td align="left"><?php echo $aank->lev_naam; ?></td>
+            	<td align="left"><?php echo $aank->afrek_oms; ?></td>
+            	<td align="right"><?php echo $aank->af_bedrag; ?> &euro;</td>
+            </tr>
+            <?php
+            	// totals
+            	$total += $aank->af_bedrag;
+            ?>
+        <?php endforeach; ?>
+           		<tr>
+    			<td colspan="5" align="right">Totaal: <?php echo number_format($total, 2, '.', ''); ?> &euro;</td>
+    		</tr>
+    	</tbody>
+	</table>
+	<p><b>Totaal openstaande facturen: <?php echo number_format($total, 2, '.', ''); ?> &euro;</b></p>
+	<p>
+	<form>
+		<input type="button" value="Afdrukken" onClick="window.print()">
+	</form>
+	</p>

@@ -1,0 +1,343 @@
+@charset "utf-8";
+body  {
+	font: 300 13px/1.4 Arial, sans-serif;
+	line-height: 1.4; /* Safari 2.0.4 */
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #555;
+	background: #E4E5E8;
+}
+.thrColAbsHdr #container { 
+	position: relative; /* adding position: relative allows you to position the two sidebars relative to this container */
+	width: 99%;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #E4E5E8;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	padding-left: 10px;
+	padding-top: 20px;
+} 
+
+/* Tips for absolutely positioned sidebars with header and footer:
+1. Absolutely positioned (AP) elements must be given a top and side value, either right or left. (As a default, if no top value is given, the AP element will begin directly after the last element in the source order of the page. This means, if the sidebars are first element in the #container in the document's source order, they will appear at the top of the #container even without being given a top value. However, if they are moved later in the source order for any reason, they'll need a top value to appear where you desire.
+2. Absolutely positioned (AP) elements are taken out of the flow of the document. This means the elements around them don't know they exist and don't account for them when taking up their proper space on the page. Thus, an AP div should only be used as a side column if you are sure the middle #mainContent div will always contain the most content. If either sidebar were to contain more content, that sidebar would run over the bottom of the parent div, and in this case the footer as well, and the sidebar would not appear to be contained.
+3. If the above mentioned requirements are met, absolutely positioned sidebars can be an easy way to control the source order of the document.
+4. If the source order is changed, the top value should be equal to the height of the header since this will cause the columns to visually meet the header.
+*/
+.thrColAbsHdr #header { 
+	height: 150px; /* if you're changing the source order of the columns, you'll may want to use a height on the header so that you can give the columns a predictable top value */
+	background: #FFF;
+	width: 99%;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	padding-top: 5px;
+	padding-left: 10px;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+}
+
+.thrColAbsHdr #menu { 
+	height: 32px; /* if you're changing the source order of the columns, you'll may want to use a height on the header so that you can give the columns a predictable top value */
+	width: 99%;
+	border-top: 1px solid #007CDF;
+	margin: auto; /* the auto margins (in conjunction with a width) center the page */
+	background: #FFFFFF url(../css/custom-theme/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x;
+	padding-left: 10px;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+} 
+.thrColAbsHdr #header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+}
+.thrColAbsHdr #sidebar1 {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+	width: 170px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #FFF; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+	border-left: 1px solid #000000;
+	border-top: 1px solid #000000;
+}
+.thrColAbsHdr #sidebar2 {
+	position: absolute;
+	top: 20px;
+	right: 10px;
+	width: 300px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #FFF; /* the background color will be displayed for the length of the content in the column, but no further */
+	padding: 15px 10px 15px 20px; /* padding keeps the content of the div away from the edges */
+	border-left: 1px solid #000000;
+	border-top: 1px solid #000000;
+}
+.thrColAbsHdr #mainContent {
+	margin-right: 0px;
+	margin-left: 200px;
+	padding: 0 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+}
+.thrColAbsHdr #footer { 
+	background: #FFFFFF url(../css/custom-theme/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x;
+	width: 99%;
+		padding-left: 10px;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+} 
+.thrColAbsHdr #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+
+/* Typography */
+
+h1, h2, h3, h4, h5 {
+	color: #007CDF;
+	line-height: 1.1;
+	font-weight: 300;
+}
+
+h1, h2 {
+	font-size: 21px;
+	padding: 0 0 12px;
+}
+
+h3 {
+	font-size: 18px;
+	padding: 0 0 10px;
+}
+
+h4 {
+	font-size: 15px;
+	padding: 0 0 10px;
+}
+h5 {
+	font-size: 15px;
+	padding: 0;
+	margin-top:10px;
+    margin-bottom:0px;
+	
+}
+
+#content ul {
+	list-style: disc;
+	padding: 0 0 20px 20px;
+}
+
+#content ol {
+	list-style: decimal;
+	padding: 0 0 20px 0;
+}
+
+#content ol li {
+	margin: 0 0 0 30px;
+}
+
+#content ol ul, #content ul ul, #content ul ol {
+	padding-bottom: 0;
+}
+
+p {
+	padding: 0 0 8px 0;
+}
+
+blockquote {
+	font-style: italic;
+	padding-left: 15px;
+}
+
+blockquote p {
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+div.meta a:link {
+	text-decoration: none;
+	color: #007CDF;
+}
+
+div.meta a:visited {
+	color: #0069bc;
+	text-decoration: none;
+}
+
+strong {
+	color: #444;
+}
+
+/*
+ *  = messages
+ * ---------------------------------------------------------
+ */
+#message {
+	font-family: Arial, sans-serif;
+	background-color: #FFF;
+	border-top: 1px solid #007CDF;
+	border-left: 1px solid #007CDF;
+	padding-bottom: 5px;
+}
+
+a.nav, a.nav:link, a.nav:visited {
+	font-family: Arial, sans-serif;
+	color: #007CDF;
+}
+a.nav:hover{
+	color: #333333;
+}
+
+#menubar {
+	margin-top: 2px;
+}
+	.fg-button { outline: 0; margin:0 4px 0 0; padding: .4em 1em; text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
+	.fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+	
+	a.fg-button { float:left; }
+	
+	/* remove extra button width in IE */
+	button.fg-button { width:auto; overflow:visible; }
+	
+	.fg-button-icon-left { padding-left: 2.1em; }
+	.fg-button-icon-right { padding-right: 2.1em; }
+	.fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
+	.fg-button-icon-right .ui-icon { left: auto; right: .2em; margin-left: 0; }
+	
+	.fg-button-icon-solo { display:block; width:8px; text-indent: -9999px; }	 /* solo icon buttons must have block properties for the text-indent to work */	
+	
+	.fg-buttonset { float:left; }
+	.fg-buttonset .fg-button { float: left; }
+	.fg-buttonset-single .fg-button, 
+	.fg-buttonset-multi .fg-button { margin-right: -1px;}
+	
+	.fg-toolbar { padding: .5em; margin: 0;  }
+	.fg-toolbar .fg-buttonset { margin-right:1.5em; padding-left: 1px; }
+	.fg-toolbar .fg-button { font-size: 1em;  }
+	h2 { clear: both; padding-top:1.5em; margin-top:0; } 
+	.strike { text-decoration: line-through; }
+
+td.decimal{
+	text-align: right;
+}
+th.decimal{
+	text-align: right;
+}
+
+span.decimal{
+	width: 100%;
+	align: right;
+	text-align: right;
+}
+
+#list {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	width: 100%;
+	font-size: 8pt;
+	text-align: left;
+}
+#list thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+#list thead tr .header {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+#list tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+#list thead tr .headerSortUp {
+	background-image: url(../images/asc.gif);
+}
+#list thead tr .headerSortDown {
+	background-image: url(../images/desc.gif);
+}
+#list thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+#gridlist {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	text-align: left;
+	width: 100%;
+}
+#gridlist thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+#gridlist thead tr .header {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+#gridlist tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+#gridlist tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+
+#gridlist2 {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	text-align: left;
+}
+#gridlist2 thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}
+#gridlist2 thead tr .header {
+	background-image: url(../images/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+#gridlist2 tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: middle;
+}
+#gridlist2 tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+
+#griddetail {
+	margin:10px 0pt 15px;
+	font-size: 10pt;
+	width: 100%;
+}
+#griddetail thead tr th, table.tablesorter tfoot tr th {
+	font-size: 10pt;
+	padding: 4px;
+}
+#griddetail thead tr .header {
+	background-position: center right;
+	cursor: pointer;
+}
+#griddetail tbody td {
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: middle;
+}

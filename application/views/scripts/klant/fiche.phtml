@@ -1,0 +1,137 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'klant', 'action' => 'add'), 'default', true);?>">Klant toevoegen</a><br />
+<a class="nav" href="<?php echo $this->url(array('controller' => 'klant', 'action' => 'index'), 'default', true);?>">Overzicht klanten</a><br />
+</p>
+<div id="klantfiche">
+<ul>
+	<li><a href="#tabs-1">Detail</a></li>
+	<li><a href="#tabs-2">Facturatie</a></li>
+	<li><a href="#tabs-3">Notities</a></li>
+</ul>
+<div id="tabs-1">
+<table id="griddetail">
+	<tr>
+		<td>
+			<b>Klant ID</b><br/>
+			<?php echo $this->klant[kl_id]; ?>
+		</td>
+		<td>
+			<b>Actief</b><br />
+			<?php echo $this->klant[kl_actief]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Naam</b><br/>
+			<?php echo $this->klant[kl_naam1]; ?>
+		</td>
+		<td>
+			<b>Taal</b><br />
+			<?php echo $this->klant[kl_taal]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->klant[kl_naam2]; ?>
+		</td>
+		<td>
+		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Juridische vorm</b><br/>
+			<?php echo $this->klant[kl_jurvorm]; ?>
+		</td>
+		<td>
+			<b>Telefoon</b><br/>
+			<?php echo $this->klant[kl_tel1]; ?><br/>
+			<?php echo $this->klant[kl_tel2]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Adres</b><br/>
+			<?php echo $this->klant[kl_adres1]; ?>
+		</td>
+		<td>
+			<b>GSM</b><br/>
+			<?php echo $this->klant[kl_gsm]; ?>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo $this->klant[kl_adres2]; ?>
+		</td>
+		<td>
+			<b>Fax</b><br/>
+			<?php echo $this->klant[kl_fax1]; ?><br/>
+			<?php echo $this->klant[kl_fax2]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Postcode en woonplaats</b><br/>
+			<?php echo $this->klant[kl_post]; ?> <?php echo $this->klant[kl_woon];?>
+		</td>
+		<td>
+			<b>E-mail</b><br/>
+			<a href="mailto:<?php echo $this->klant[kl_email]; ?>"><?php echo $this->klant[kl_email]; ?></a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Land</b><br/>
+			<?php echo $this->klant[kl_land]; ?>
+		</td>
+		<td>
+			<b>Website</b><br/>
+			<?php echo $this->klant[kl_website]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>BTW</b><br/>
+			<?php echo $this->klant[kl_btw]; ?>
+		</td>
+		<td>
+
+		</td>
+	</tr>
+</table>
+</div>
+<div id="tabs-2">
+<table id="griddetail">
+	<tr>
+		<td>
+			<b>Uurtarief</b><br/>
+			<?php echo $this->klant[kl_uurtarief]; ?>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>KM enkel</b><br/>
+			<?php echo $this->klant[kl_aantkm]; ?>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			<b>Betalingstermijn</b><br/>
+			<?php echo $this->klant[kl_betterm]; ?>
+		</td>
+	</tr>
+</table>
+</div>
+<div id="tabs-3">
+</div>
+</div>
+<?php echo $this->tabContainer('klantfiche'); ?>
+	<p>
+	<a href="<?php echo $this->url; ?>/klant/delete/k_id/<?php echo $this->klant[k_id]; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span> Verwijderen</a>
+	<a href="<?php echo $this->url; ?>/klant/update/k_id/<?php echo $this->klant[k_id]; ?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span> Aanpassen</a>
+	</p>

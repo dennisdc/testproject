@@ -1,0 +1,20 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<h5>Offertes</h5>
+<p>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'vf', 'action' => 'offerte'), 'default', true);?>">Nieuwe offerte</a><br/>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'offerte', 'action' => 'offerteoverzicht'), 'default', true);?>">Overzicht</a>
+</p>
+<h5>Bestellingen</h5>
+<p>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'vf', 'action' => 'bestelling'), 'default', true);?>">Nieuwe bestelling</a><br/>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'vf', 'action' => 'besteloverzicht'), 'default', true);?>">Overzicht</a>
+</p>
+<h5>Facturen</h5>
+<p>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'vf', 'action' => 'offerte'), 'default', true);?>">Nieuwe factuur</a><br/>
+<a class="nav" href="<?php echo $this->url(array('controller' => 'vf', 'action' => 'factuuroverzicht'), 'default', true);?>">Overzicht</a>
+</p>

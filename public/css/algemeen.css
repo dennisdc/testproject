@@ -1,0 +1,191 @@
+body {
+	background: #E4E5E8 url(../images/bodybg.png) repeat-x;
+	font: 300 13px/1.4 Arial, sans-serif;
+	line-height: 1.4; /* Safari 2.0.4 */
+	margin: 20px, 10px, 20px, 10px ;
+	color: #555;
+}
+
+/* Typography */
+
+h1, h2, h3, h4 {
+	color: #007CDF;
+	line-height: 1.1;
+	font-weight: 300;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+h1, h2 {
+	font-size: 21px;
+	color: #007CDF;
+	font-weight: 300;
+	padding: 0 0 12px;
+}
+
+h3 {
+	color: #007CDF;
+	font-size: 18px;
+	padding: 0 0 10px;
+}
+
+h4 {
+	font-size: 15px;
+	padding: 0 0 10px;
+}
+
+#content ul {
+	list-style: disc;
+	padding: 0 0 20px 20px;
+}
+
+#content ol {
+	list-style: decimal;
+	padding: 0 0 20px 0;
+}
+
+#content ol li {
+	margin: 0 0 0 30px;
+}
+
+#content ol ul, #content ul ul, #content ul ol {
+	padding-bottom: 0;
+}
+
+p {
+	padding: 0 0 8px 0;
+}
+
+blockquote {
+	font-style: italic;
+	padding-left: 15px;
+}
+
+blockquote p {
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+/* Link styles*/
+
+a:link { color: #007cdf; }
+a:visited { color: #0069bc; }
+a:hover { color: #222; }
+a:active { color: #000; }
+
+div.meta a:link {
+	text-decoration: none;
+	color: #007CDF;
+}
+
+div.meta a:visited {
+	color: #0069bc;
+	text-decoration: none;
+}
+
+strong {
+	color: #444;
+}
+
+/* Structural */
+
+#container {
+	width: 100%;
+}
+
+#content {
+	margin-left: 40px;
+	width: 1066px; /*551*/
+}
+
+/* Footer */
+#footer {
+	background: url('../images/footerbg.png') no-repeat left;
+	height: 34px;
+	line-height: 34px;
+	color: #FFF;
+	padding: 0 24px;
+	margin: 0 0 48px;
+}
+/* main menu */
+#main-menu {
+    margin:5px 5px 5px 5px;
+    font-size:0.9em;
+    font-weight:bold;
+    margin:0;
+}
+
+/**
+ * = Tables
+ * ----------------------------------------------------------
+ */
+
+#list {
+	font-family: Arial, sans-serif;
+	border-top: 1px solid #d9d9d9;
+	border-left: 1px solid #d9d9d9;
+}
+
+#list td, th {
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+#list thead {
+	font-weight: 700;
+	background: #ddd;
+	color: black;
+}
+/*
+ *  = messages
+ * ---------------------------------------------------------
+ */
+#message {
+	font-family: Arial, sans-serif;
+	background-color: #FFF;
+	border-top: 1px solid #007CDF;
+	border-left: 1px solid #007CDF;
+}
+
+/**
+ * = Clearfix
+ * ----------------------------------------------------------
+ */
+
+	/* Modern Browsers */
+	.clearfix:after, dl:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+	
+	/* IE6 */
+	.clearfix, dl { 
+		_display: inline-block;
+	}
+	
+	/* IE7 */
+	*:first-child+html .clearfix, *:first-child+html dl { 
+		height: 1%;
+	}
+	
+/**
+ * = Firefox Fixes - The Classics!
+ * ----------------------------------------------------------
+ */
+
+	@-moz-document url-prefix() {
+
+		/* Link outlines */
+		*:-moz-any-link {
+			overflow: hidden;
+		}
+
+		/* CSS disappearing caret fix */
+		input[type="text"], input[type="password"], textarea {
+			overflow: auto;
+		}
+  
+	}
+	

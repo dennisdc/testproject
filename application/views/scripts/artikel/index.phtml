@@ -1,0 +1,38 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<p>
+<a href="<?php echo $this->url(array('controller'=> 'artikel', 'action' => 'add'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Toevoegen</a>
+<a href="<?php echo $this->url(array('controller'=> 'artikel', 'action' => 'index'), 'default', true) ?>" class="fg-button ui-state-default ui-corner-all">Terug</a><br />
+</p>
+<table id="list">
+	<thead>
+	<tr>
+	<th>Groep</th>
+	<th>Ref.</th>
+	<th>Naam</th>
+	<th>Leverancier</th>
+	<th class="decimal">Aankoop</th>
+	<th class="decimal">Verkoop</th>
+	<th>Verwijderen</th>
+	<th>Aanpassen</th>
+	</tr>
+	</thead>
+	<tbody>
+	<?php foreach( $this->artikel as $art ) : ?>
+            <tr>
+            <td><?php echo $art->artgroep_oms; ?></td>
+            <td><?php echo $art->art_reflev; ?></td>
+            <td><?php echo $art->art_oms; ?></td>
+            <td><?php echo $art->lev_naam; ?></td>
+            <td class="decimal"><?php echo $art->art_akp; ?></td>
+            <td class="decimal"><?php echo $art->art_vkp; ?></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'artikel', 'action' => 'delete', 'art_id' => $art->art_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Verwijderen"><span class="ui-icon ui-icon-trash"></span>Verwijderen</a></td>
+            <td><a href="<?php echo $this->url(array('controller' => 'artikel', 'action' => 'update', 'art_id' => $art->art_id), 'default', true);?>" class="fg-button ui-state-default fg-button-icon-solo ui-corner-all" title="Aanpassen"><span class="ui-icon ui-icon-pencil"></span>Aanpassen</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<p>Totaal aantal artikels: <b><?php echo $this->artikelcount;?></b></p>

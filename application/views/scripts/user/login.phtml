@@ -1,0 +1,7 @@
+<?php $this->layout()->setLayout('login'); ?>
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" .$this->messages . "</div>";
+};
+?>
+<div><?php echo $this->form;?></div>

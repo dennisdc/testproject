@@ -1,0 +1,7 @@
+<?php
+if (!empty($this->messages)){
+	echo "<div id='message'>" . $this->messages . "</div>";
+};
+?>
+<a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'register'), 'default', true);?>">Nieuwe gebruiker</a><br />
+<a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'userlist'), 'default', true);?>">Overzicht gebruikers</a>
