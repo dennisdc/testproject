@@ -16,6 +16,7 @@ class Form_Artikel extends Zend_Form
 		$artgroepElement = new Zend_Form_Element_Select('artgroep_id');
 		$groepen = new Model_DbTable_Artikelgroep();
 		$fgroepen = $groepen->getArtikelgroepList();
+		$artgroepElement->addMultiOption('', '');
 		foreach ($fgroepen as $groep){
 			$artgroepElement->addMultiOption($groep->artgroep_id, $groep->artgroep_oms);
 		}
@@ -49,11 +50,23 @@ class Form_Artikel extends Zend_Form
 		->addfilter('StringTrim')
 		->addValidator('NotEmpty')
 		->setRequired(true);		
+
+		// LEVERANCIER
+		$btwElement = new Zend_Form_Element_Select('btw_id');
+		$btwmodel = new Model_DbTable_Btw();
+		$btwElement->addMultiOption('', '');
+		foreach ($btwmodel->getBtws() as $b){
+			$btwElement->addMultiOption($b->btw_id, $b->btw_waarde);
+		}
+		$btwElement->setLabel('Btw')
+		->addValidator('NotEmpty')
+		->setRequired(true);
 		
 		// LEVERANCIER
 		$levElement = new Zend_Form_Element_Select('lev_id');
 		$leveran = new Model_DbTable_Leveran();
 		$flev = $leveran->getLeveranList();
+		$levElement->addMultiOption('', '');
 		foreach ($flev as $lev){
 			$levElement->addMultiOption($lev->lev_id, $lev->lev_naam);
 		}
@@ -74,7 +87,7 @@ class Form_Artikel extends Zend_Form
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('id', 'submitbutton');
 		
-		$this->addElements(array($actiefElement, $artgroepElement, $naamElement, $akpElement, $vkpElement,
+		$this->addElements(array($actiefElement, $artgroepElement, $naamElement, $akpElement, $vkpElement, $btwElement,
 								$levElement, $reflevElement, $submit));
 	}
 }

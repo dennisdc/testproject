@@ -31,6 +31,13 @@ class KlantController extends Zend_Controller_Action
 		if (!Zend_Auth::getInstance()->hasIdentity()) {
 			$this->_redirect('/user/login');
 		}  
+		else{
+			$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+			$username = $ddcNamespace->username;
+			$usrmodel = new Model_DbTable_User();
+			$user = $usrmodel->getUserByIdJoined($ddcNamespace->userid);
+			$this->view->headeruser = $user;
+		}  
 	}
 
 	protected function flash($message,$to)
@@ -91,6 +98,13 @@ class KlantController extends Zend_Controller_Action
  					$this->view->errormessages = $messages;
     			} else{
     				// no errors found, prepare data for insertion to db
+    				$kl_uurtarief = $this->_request->getPost('kl_uurtarief', 0.00);
+    				$kl_aantkm = $this->_request->getPost('kl_aantkm', 0.00);
+    				$kl_betterm = $this->_request->getPost('kl_betterm', 0.00);
+    				$kl_uurtarief = empty($kl_uurtarief) ? 0 :$kl_uurtarief;
+    				$kl_aantkm = empty($kl_aantkm) ? 0 :$kl_aantkm;
+    				$kl_betterm = empty($kl_betterm) ? 0 :$kl_betterm;
+    				
     				$data = array(
     					'kl_actief' => $this->_request->getPost('kl_actief'),
     					'kl_taal' => $this->_request->getPost('kl_taal'),
@@ -110,9 +124,9 @@ class KlantController extends Zend_Controller_Action
     					'kl_fax2' => $this->_request->getPost('kl_fax2'),
     					'kl_email' => $this->_request->getPost('kl_email'),
     					'kl_website' => $this->_request->getPost('kl_website'),
-    					'kl_uurtarief' => $this->_request->getPost('kl_uurtarief'),
-    					'kl_aantkm' => $this->_request->getPost('kl_aantkm'),
-    					'kl_betterm' => $this->_request->getPost('kl_betterm')
+    					'kl_uurtarief' => $kl_uurtarief,
+    					'kl_aantkm' => $kl_aantkm,
+    					'kl_betterm' => $kl_betterm
     				);
     				// commit to db
     				$klant = new Model_DbTable_Klant();

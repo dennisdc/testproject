@@ -15,7 +15,7 @@ $(document).ready(function() {
 		"bStateSave": true,
 		"iCookieDuration": 60*60*24
 	} );
-    $("textarea").htmlarea( {
+    /*$("textarea").htmlarea( {
            toolbar: [
                      ["html"], ["bold", "italic", "underline", "strikethrough", "|", "subscript", "superscript"],
                      ["increasefontsize", "decreasefontsize"],
@@ -26,13 +26,12 @@ $(document).ready(function() {
                      ["p", "h1", "h2", "h3", "h4", "h5", "h6"],
                      ["cut", "copy", "paste"]
                     ]
-    });
+    });*/
 } );
 </script>
 </head>
 <body class="thrColAbsHdr">
-
-<div id="header"><?php echo $this->partial("_header.phtml"); ?></div>
+<div id="header"><?php echo $this->partial("_header.phtml", array('headeruser' => $this->headeruser)); ?></div>
 <div id="menu"><?php echo $this->partial("_menu.phtml"); ?></div>
 <div id="container">
 	<div id="mainContent">
@@ -42,7 +41,9 @@ $(document).ready(function() {
 					<img src="images/spacer.gif" height="600" width="2" />
 				</td>
 				<td>
-					<h1><?php echo $this->escape($this->title); ?></h1>
+					<?php if(!empty($this->title)):?>
+						<h1><?php echo $this->escape($this->title); ?></h1>
+					<?php endif;?>
 					<?php echo $this->layout()->content; ?>
 				</td>
 			</tr>

@@ -32,6 +32,13 @@ class UserController extends Zend_Controller_Action
             $profiler->setEnabled(true);
             $this->db->setProfiler($profiler);
         }
+		if (Zend_Auth::getInstance()->hasIdentity()) {
+			$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+			$username = $ddcNamespace->username;
+			$usrmodel = new Model_DbTable_User();
+			$user = $usrmodel->getUserByIdJoined($ddcNamespace->userid);
+			$this->view->headeruser = $user;
+		}  
         Zend_Registry::set('db', $this->db);
 	}
 
@@ -73,14 +80,14 @@ class UserController extends Zend_Controller_Action
     			$user = new Model_DbTable_User();
     			
     			$foundUser = $user->getUserByEmail($email);
-    			if ($foundUser->id != ""){
+    			if ($foundUser->u_id != ""){
     				$messages[] = 'E-mail is reeds in gebruik.';
     				$iserror = 1;
     			}
  
     			// username cannot already exist in database
     			$foundUser = $user->getUserByUsername($username);
-    			if ($foundUser->id != ""){
+    			if ($foundUser->u_id != ""){
     				$messages[] = 'Username is already in use.';
     				$iserror = 1;
     			}
@@ -217,7 +224,7 @@ class UserController extends Zend_Controller_Action
     	$this->view->title = "Overzicht gebruikers";
     	$this->view->headTitle($this->view->title, 'PREPEND');
     	$user = new Model_DbTable_User();
-    	$this->view->user = $user->getUserList();
+    	$this->view->user = $user->getActiveUserList();
     	$request = clone $this->getRequest();
     	$request->setActionName('leftcontent')
     	        ->setControllerName('tools');        

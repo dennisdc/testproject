@@ -31,6 +31,13 @@ class ArtikelgroepController extends Zend_Controller_Action
 		if (!Zend_Auth::getInstance()->hasIdentity()) {
 			$this->_redirect('/user/login');
 		}  
+		else{
+			$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+			$username = $ddcNamespace->username;
+			$usrmodel = new Model_DbTable_User();
+			$user = $usrmodel->getUserByIdJoined($ddcNamespace->userid);
+			$this->view->headeruser = $user;
+		}  
 	}
 
 	protected function flash($message,$to)

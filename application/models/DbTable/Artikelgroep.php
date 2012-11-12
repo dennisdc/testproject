@@ -68,5 +68,27 @@ class Model_DbTable_Artikelgroep extends Zend_Db_Table_Abstract
 			$newdate = new Zend_Date($date, null, 'nl_BE');
 			return $newdate->get($format);
 		}
-	}	
+	}
+	
+    protected function _fetch(Zend_Db_Table_Select $select)
+    {
+    	$usermodel = new Model_DbTable_User();
+    	$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+    	$user = $usermodel->getUserById($ddcNamespace->userid);
+    	$this->_where($select, $this->_name . '.ent_id = ' . $user['ent_id']);
+    	return parent::_fetch($select);
+    }	
+    
+	/* (non-PHPdoc)
+	 * @see Zend_Db_Table_Abstract::insert()
+	 */
+	public function insert(array $data) {
+		if(!array_key_exists('ent_id', $data)){
+	    	$usermodel = new Model_DbTable_User();
+	    	$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+	    	$user = $usermodel->getUserById($ddcNamespace->userid);
+			$data['ent_id'] = $user['ent_id'];
+		}
+		parent::insert($data);
+	}
 }

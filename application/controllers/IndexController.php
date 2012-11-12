@@ -30,8 +30,13 @@ class IndexController extends Zend_Controller_Action
 		$telecomNamespace = new Zend_Session_Namespace('Zend_Auth');
 		if (!Zend_Auth::getInstance()->hasIdentity()) {
 			$this->_redirect('/user/login');
-		} else{
+		}
+		else{
+			$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
 			$username = $ddcNamespace->username;
+			$usrmodel = new Model_DbTable_User();
+			$user = $usrmodel->getUserByIdJoined($ddcNamespace->userid);
+			$this->view->headeruser = $user;
 		}  
     }
 

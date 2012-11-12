@@ -31,6 +31,13 @@ class ArtikelController extends Zend_Controller_Action
 		if (!Zend_Auth::getInstance()->hasIdentity()) {
 			$this->_redirect('/user/login');
 		}  
+		else{
+			$ddcNamespace = new Zend_Session_Namespace('Zend_Auth');
+			$username = $ddcNamespace->username;
+			$usrmodel = new Model_DbTable_User();
+			$user = $usrmodel->getUserByIdJoined($ddcNamespace->userid);
+			$this->view->headeruser = $user;
+		}  
 	}
 
 	protected function flash($message,$to)
@@ -94,6 +101,7 @@ class ArtikelController extends Zend_Controller_Action
     				$data = array(
     					'art_actief' => $this->_request->getPost('art_actief'),
     					'artgroep_id' => $this->_request->getPost('artgroep_id'),
+    					'btw_id' => $this->_request->getPost('btw_id'),
     					'art_oms' => $this->_request->getPost('art_oms'),
     					'art_akp' => $this->_request->getPost('art_akp'),
     					'art_vkp' => $this->_request->getPost('art_vkp'),
