@@ -64,11 +64,21 @@ class VfController extends Zend_Controller_Action
     	
     	$this->view->doc = "Offerte";
     	
+    	
     	$kl_id = $this->_getParam('kl_id', 0);
+    	$art_id = $this->getRequest()->getParam('art_id');
+    	$art_aantal = $this->getRequest()->getParam('art_aantal');
+
+    	$offNamespace = new Zend_Session_Namespace('offerte');
+    	
     	if ($kl_id > 0){
+    		$offNamespace->klant = $kl_id;
     		$klant = new Model_DbTable_Klant();
     		$result = $klant->getKlantById($kl_id);
     		$this->view->klant = $result;
+    	}
+    	if($art_id > 0){
+    		$offNamespace->artikels[$art_id] += $art_aantal;
     	}
     	
     	$request = clone $this->getRequest();
