@@ -1,5 +1,5 @@
 <?php
-
+//TEST
 class AfController extends Zend_Controller_Action
 {
 
